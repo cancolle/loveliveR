@@ -1,6 +1,7 @@
 library(rvest)
 library(dplyr)
 
+#get data
 Honoka <- html("http://dic.pixiv.net/a/高坂穂乃果") %>% html_nodes("span.ui-tooltip") %>% html_text()
 Kotori <- html("http://dic.pixiv.net/a/南ことり") %>% html_nodes("span.ui-tooltip") %>% html_text()
 Umi <- html("http://dic.pixiv.net/a/園田海未") %>% html_nodes("span.ui-tooltip") %>%  html_text()
@@ -11,8 +12,10 @@ Nico <- html("http://dic.pixiv.net/a/矢澤にこ") %>% html_nodes("span.ui-tool
 Nozomi <- html("http://dic.pixiv.net/a/東條希") %>% html_nodes("span.ui-tooltip") %>% html_text()
 Eri <- html("http://dic.pixiv.net/a/絢瀬絵里") %>% html_nodes("span.ui-tooltip") %>% html_text()
 
+#make data frame
 ch <- c("Honoka", "Kotori", "Umi", "Maki", "Rin", "Hanayo", "Nico", "Nozomi", "Eri")
 vi <- c(Honoka, Kotori, Umi, Maki, Rin, Hanayo, Nico, Nozomi, Eri)
-
 Muse <- data.frame(Chara=ch, View=vi)
+
+#arrange
 arrange(Muse, desc(View))
